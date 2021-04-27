@@ -4,9 +4,11 @@
 	<typeAliases>
 		<typeAlias alias="uservo" type="com.markany.mysite.vo.UserVo"/>
 		<typeAlias alias="cctvvo" type="com.markany.mysite.vo.CCTVVo"/>
+		<typeAlias alias="recodingvo" type="com.markany.mysite.vo.RecodingVo"/>
 	</typeAliases>	
 	<mappers>
 		<mapper resource="mybatis/mapper/user.xml" />
 		<mapper resource="mybatis/mapper/cctv.xml" />
+		<mapper resource="mybatis/mapper/recoding.xml" />
 	</mappers>
 </configuration>
