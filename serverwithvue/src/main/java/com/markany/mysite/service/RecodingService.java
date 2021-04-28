@@ -19,15 +19,12 @@ public class RecodingService {
 		return recodingRepository.findAll();
 	}
 	
-	public List<RecodingVo> getRecodingById(Long startNo) {
-		return recodingRepository.findById(startNo);
-	}
-
 	public void add(RecodingVo vo) {
 		recodingRepository.insertRecodingInfo(vo);
 	}
 
 	public boolean update(RecodingVo vo) {
+		System.out.println(vo.toString());
 		int count = recodingRepository.update(vo);
 		return count == 1;
 	}
@@ -35,5 +32,9 @@ public class RecodingService {
 	public boolean delete(Long id) {
 		int count = recodingRepository.delete(id);
 		return count > 0;
+	}
+	
+	public List<RecodingVo> getRecodingById(Long startNo) {
+		return recodingRepository.findById(startNo);
 	}
 }

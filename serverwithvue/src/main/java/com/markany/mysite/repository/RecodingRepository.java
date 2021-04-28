@@ -27,6 +27,7 @@ public class RecodingRepository {
 	}
 
 	public int update(RecodingVo vo) {
+		System.out.println(vo.toString());
 		return sqlSession.update("recoding.update", vo);
 	}
 

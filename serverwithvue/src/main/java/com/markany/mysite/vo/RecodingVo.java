@@ -50,4 +50,9 @@ public class RecodingVo {
 	public void setUpdated_at(Date updated_at) {
 		this.updated_at = updated_at;
 	}
+	@Override
+	public String toString() {
+		return "RecodingVo [id=" + id + ", name=" + name + ", ip_address=" + ip_address + ", vendor=" + vendor
+				+ ", created_at=" + created_at + ", updated_at=" + updated_at + "]";
+	}
 }

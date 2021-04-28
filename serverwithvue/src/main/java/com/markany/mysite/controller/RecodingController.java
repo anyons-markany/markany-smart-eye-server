@@ -30,12 +30,6 @@ public class RecodingController {
 		return JsonResult.success(list);
 	}
 	
-//	@GetMapping("/list/{no}")
-//	public JsonResult List(@PathVariable("no") Long startNo) {
-//		List<RecodingVo> list = recodingService.getRecodingById(startNo);
-//		return JsonResult.success(list);
-//	}
-	
 	// 추가하기
 	@PostMapping("/add")
 	public JsonResult add(@RequestBody RecodingVo vo) {
@@ -46,6 +40,7 @@ public class RecodingController {
 	// 수정하기
 	@RequestMapping("/update")
 	public JsonResult update(@RequestBody RecodingVo vo) {
+		System.out.println(vo.toString());
 		recodingService.update(vo);
 		return JsonResult.success(vo);
 	}

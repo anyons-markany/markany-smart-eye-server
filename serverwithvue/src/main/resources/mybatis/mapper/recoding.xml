@@ -18,7 +18,6 @@
 	</select>
 	
 	
-	
 	<insert id="insert" parameterType="recodingvo">
 		<![CDATA[
 			insert 
@@ -32,18 +31,30 @@
 		</selectKey>
 	</insert>
 	
-	
-	
 	<update id="update" parameterType="recodingvo">
-		<![CDATA[
-			update event_sources
-			   set	updated_at=now(),
-			   		name=#{name },
-			       	ip_address=#{ip_address },
-			       	vendor=#{vendor },
-			 where id=#{id }
-		]]>
-	</update>	
+		<choose>
+			<when test='updated_at == null'>
+				<![CDATA[
+					update event_sources
+					   set	updated_at=now(),
+					   		name=#{name },
+					       	ip_address=#{ip_address },
+					       	vendor=#{vendor }
+					 where id=#{id }
+				]]>					
+			</when>
+			<otherwise>
+				<![CDATA[
+					update event_sources
+					   set	updated_at=now(),
+					   		name=#{name },
+					       	ip_address=#{ip_address },
+					       	vendor=#{vendor }
+					 where id=#{id }
+				]]>					
+			</otherwise>
+		</choose>		
+	</update>
 	
 	<delete id="delete" parameterType="Long">
 		<![CDATA[
