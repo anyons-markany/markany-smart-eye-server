@@ -17,8 +17,20 @@ public class RecodingRepository {
 	public List<RecodingVo> findAll() {
 		return sqlSession.selectList("recoding.findAll");
 	}
+	
+	public List<RecodingVo> findById(Long startNo) {
+		return sqlSession.selectOne("recoding.findById", startNo);
+	}
 
 	public int insertRecodingInfo(RecodingVo vo) {
 		return sqlSession.insert("recoding.insert", vo);
+	}
+
+	public int update(RecodingVo vo) {
+		return sqlSession.update("recoding.update", vo);
+	}
+
+	public int delete(Long id) {
+		return sqlSession.delete("recoding.delete", id);
 	}
 }
