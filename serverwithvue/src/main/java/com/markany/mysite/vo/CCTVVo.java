@@ -1,52 +1,42 @@
 package com.markany.mysite.vo;
 
+import java.util.Date;
+
 public class CCTVVo {
 	
 	private Long id;
-	private String idString;
 	private String name;
+	private boolean ptz_control_usage;
+	private boolean alarm;
+	private boolean emergency_bell;
 	private String comment;
-	private String address;
-	private String ipAddress;
+	private String ip_address;
 	private String area1;
 	private String area2;
 	private String area3;
-	private String latitude;
-	private String longitude;
-	private String managePort;
-	private String rtspPort;
-	private String rtspPath;
-	private String onvifPort;
-	private String onvifProfile;
+	private double latitude;
+	private double longitude;
 	private String manufacturer;
 	private String model;
+	private String rtsp_path;
+	private String rtsp_port;
+	private String onvif_profile;
+	private String onvif_port;
 	private String username;
-	private String alarm;
-	private String cameraType;
-	private String panFlip;
-	private String panDegree;
-	private String tiltDegree;
-	private String playBefore;
-	private String playAfter;
-	private String forwarded;
-	private String capImage;
-	private String updatedAt;
-	private String firmwareVersion;
-	private String emergencyBell;
-	private String luaScript;
-	private String healthCheck;
-	private String ptzScript;
+	private String password;
+	private String camera_type;
+	private String manage_port;
+	private boolean forwarded;
+	private Date updated_at;
+	private String health_comment;
+	private String user_comment;
+	
+	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	public String getIdString() {
-		return idString;
-	}
-	public void setIdString(String idString) {
-		this.idString = idString;
 	}
 	public String getName() {
 		return name;
@@ -54,23 +44,35 @@ public class CCTVVo {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public boolean isPtz_control_usage() {
+		return ptz_control_usage;
+	}
+	public void setPtz_control_usage(boolean ptz_control_usage) {
+		this.ptz_control_usage = ptz_control_usage;
+	}
+	public boolean isAlarm() {
+		return alarm;
+	}
+	public void setAlarm(boolean alarm) {
+		this.alarm = alarm;
+	}
+	public boolean isEmergency_bell() {
+		return emergency_bell;
+	}
+	public void setEmergency_bell(boolean emergency_bell) {
+		this.emergency_bell = emergency_bell;
+	}
 	public String getComment() {
 		return comment;
 	}
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	public String getAddress() {
-		return address;
+	public String getIp_address() {
+		return ip_address;
 	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public String getIpAddress() {
-		return ipAddress;
-	}
-	public void setIpAddress(String ipAddress) {
-		this.ipAddress = ipAddress;
+	public void setIp_address(String ip_address) {
+		this.ip_address = ip_address;
 	}
 	public String getArea1() {
 		return area1;
@@ -90,47 +92,17 @@ public class CCTVVo {
 	public void setArea3(String area3) {
 		this.area3 = area3;
 	}
-	public String getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
-	public void setLatitude(String latitude) {
+	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
-	public String getLongitude() {
+	public double getLongitude() {
 		return longitude;
 	}
-	public void setLongitude(String longitude) {
+	public void setLongitude(double longitude) {
 		this.longitude = longitude;
-	}
-	public String getManagePort() {
-		return managePort;
-	}
-	public void setManagePort(String managePort) {
-		this.managePort = managePort;
-	}
-	public String getRtspPort() {
-		return rtspPort;
-	}
-	public void setRtspPort(String rtspPort) {
-		this.rtspPort = rtspPort;
-	}
-	public String getRtspPath() {
-		return rtspPath;
-	}
-	public void setRtspPath(String rtspPath) {
-		this.rtspPath = rtspPath;
-	}
-	public String getOnvifPort() {
-		return onvifPort;
-	}
-	public void setOnvifPort(String onvifPort) {
-		this.onvifPort = onvifPort;
-	}
-	public String getOnvifProfile() {
-		return onvifProfile;
-	}
-	public void setOnvifProfile(String onvifProfile) {
-		this.onvifProfile = onvifProfile;
 	}
 	public String getManufacturer() {
 		return manufacturer;
@@ -144,115 +116,88 @@ public class CCTVVo {
 	public void setModel(String model) {
 		this.model = model;
 	}
+	public String getRtsp_path() {
+		return rtsp_path;
+	}
+	public void setRtsp_path(String rtsp_path) {
+		this.rtsp_path = rtsp_path;
+	}
+	public String getRtsp_port() {
+		return rtsp_port;
+	}
+	public void setRtsp_port(String rtsp_port) {
+		this.rtsp_port = rtsp_port;
+	}
+	public String getOnvif_profile() {
+		return onvif_profile;
+	}
+	public void setOnvif_profile(String onvif_profile) {
+		this.onvif_profile = onvif_profile;
+	}
+	public String getOnvif_port() {
+		return onvif_port;
+	}
+	public void setOnvif_port(String onvif_port) {
+		this.onvif_port = onvif_port;
+	}
 	public String getUsername() {
 		return username;
 	}
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getAlarm() {
-		return alarm;
+	public String getPassword() {
+		return password;
 	}
-	public void setAlarm(String alarm) {
-		this.alarm = alarm;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public String getCameraType() {
-		return cameraType;
+	public String getCamera_type() {
+		return camera_type;
 	}
-	public void setCameraType(String cameraType) {
-		this.cameraType = cameraType;
+	public void setCamera_type(String camera_type) {
+		this.camera_type = camera_type;
 	}
-	public String getPanFlip() {
-		return panFlip;
+	public String getManage_port() {
+		return manage_port;
 	}
-	public void setPanFlip(String panFlip) {
-		this.panFlip = panFlip;
+	public void setManage_port(String manage_port) {
+		this.manage_port = manage_port;
 	}
-	public String getPanDegree() {
-		return panDegree;
-	}
-	public void setPanDegree(String panDegree) {
-		this.panDegree = panDegree;
-	}
-	public String getTiltDegree() {
-		return tiltDegree;
-	}
-	public void setTiltDegree(String tiltDegree) {
-		this.tiltDegree = tiltDegree;
-	}
-	public String getPlayBefore() {
-		return playBefore;
-	}
-	public void setPlayBefore(String playBefore) {
-		this.playBefore = playBefore;
-	}
-	public String getPlayAfter() {
-		return playAfter;
-	}
-	public void setPlayAfter(String playAfter) {
-		this.playAfter = playAfter;
-	}
-	public String getForwarded() {
+	public boolean isForwarded() {
 		return forwarded;
 	}
-	public void setForwarded(String forwarded) {
+	public void setForwarded(boolean forwarded) {
 		this.forwarded = forwarded;
 	}
-	public String getCapImage() {
-		return capImage;
+	public Date getUpdated_at() {
+		return updated_at;
 	}
-	public void setCapImage(String capImage) {
-		this.capImage = capImage;
+	public void setUpdated_at(Date updated_at) {
+		this.updated_at = updated_at;
 	}
-	public String getUpdatedAt() {
-		return updatedAt;
+	public String getHealth_comment() {
+		return health_comment;
 	}
-	public void setUpdatedAt(String updatedAt) {
-		this.updatedAt = updatedAt;
+	public void setHealth_comment(String health_comment) {
+		this.health_comment = health_comment;
 	}
-	public String getFirmwareVersion() {
-		return firmwareVersion;
+	public String getUser_comment() {
+		return user_comment;
 	}
-	public void setFirmwareVersion(String firmwareVersion) {
-		this.firmwareVersion = firmwareVersion;
-	}
-	public String getEmergencyBell() {
-		return emergencyBell;
-	}
-	public void setEmergencyBell(String emergencyBell) {
-		this.emergencyBell = emergencyBell;
-	}
-	public String getLuaScript() {
-		return luaScript;
-	}
-	public void setLuaScript(String luaScript) {
-		this.luaScript = luaScript;
-	}
-	public String getHealthCheck() {
-		return healthCheck;
-	}
-	public void setHealthCheck(String healthCheck) {
-		this.healthCheck = healthCheck;
-	}
-	public String getPtzScript() {
-		return ptzScript;
-	}
-	public void setPtzScript(String ptzScript) {
-		this.ptzScript = ptzScript;
+	public void setUser_comment(String user_comment) {
+		this.user_comment = user_comment;
 	}
 	@Override
 	public String toString() {
-		return "CCTVVo [id=" + id + ", idString=" + idString + ", name=" + name + ", comment=" + comment + ", address="
-				+ address + ", ipAddress=" + ipAddress + ", area1=" + area1 + ", area2=" + area2 + ", area3=" + area3
-				+ ", latitude=" + latitude + ", longitude=" + longitude + ", managePort=" + managePort + ", rtspPort="
-				+ rtspPort + ", rtspPath=" + rtspPath + ", onvifPort=" + onvifPort + ", onvifProfile=" + onvifProfile
-				+ ", manufacturer=" + manufacturer + ", model=" + model + ", username=" + username + ", alarm=" + alarm
-				+ ", cameraType=" + cameraType + ", panFlip=" + panFlip + ", panDegree=" + panDegree + ", tiltDegree="
-				+ tiltDegree + ", playBefore=" + playBefore + ", playAfter=" + playAfter + ", forwarded=" + forwarded
-				+ ", capImage=" + capImage + ", updatedAt=" + updatedAt + ", firmwareVersion=" + firmwareVersion
-				+ ", emergencyBell=" + emergencyBell + ", luaScript=" + luaScript + ", healthCheck=" + healthCheck
-				+ ", ptzScript=" + ptzScript + "]";
+		return "CCTVVo [id=" + id + ", name=" + name + ", ptz_control_usage=" + ptz_control_usage + ", alarm=" + alarm
+				+ ", emergency_bell=" + emergency_bell + ", comment=" + comment + ", ip_address=" + ip_address
+				+ ", area1=" + area1 + ", area2=" + area2 + ", area3=" + area3 + ", latitude=" + latitude
+				+ ", longitude=" + longitude + ", manufacturer=" + manufacturer + ", model=" + model + ", rtsp_path="
+				+ rtsp_path + ", rtsp_port=" + rtsp_port + ", onvif_profile=" + onvif_profile + ", onvif_port="
+				+ onvif_port + ", username=" + username + ", password=" + password + ", camera_type=" + camera_type
+				+ ", manage_port=" + manage_port + ", forwarded=" + forwarded + ", updated_at=" + updated_at
+				+ ", health_comment=" + health_comment + ", user_comment=" + user_comment + "]";
 	}
-	
-	
+
 }

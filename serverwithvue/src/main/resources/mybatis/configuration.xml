@@ -2,14 +2,16 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="uservo" type="com.markany.mysite.vo.UserVo"/>
-		<typeAlias alias="cctvvo" type="com.markany.mysite.vo.CCTVVo"/>
 		<typeAlias alias="recodingvo" type="com.markany.mysite.vo.RecodingVo"/>
+		<typeAlias alias="cctvvo" type="com.markany.mysite.vo.CCTVVo"/>
+		<typeAlias alias="cctvgroupvo" type="com.markany.mysite.vo.CCTVGroupVo"/>
+		<typeAlias alias="uservo" type="com.markany.mysite.vo.UserVo"/>
 	</typeAliases>	
 	<mappers>
-		<mapper resource="mybatis/mapper/user.xml" />
-		<mapper resource="mybatis/mapper/cctv.xml" />
 		<mapper resource="mybatis/mapper/recoding.xml" />
+		<mapper resource="mybatis/mapper/cctv.xml" />
+		<mapper resource="mybatis/mapper/cctvgroup.xml" />
+		<mapper resource="mybatis/mapper/user.xml" />
 		<mapper resource="mybatis/mapper/state.xml" />
 	</mappers>
 </configuration>
