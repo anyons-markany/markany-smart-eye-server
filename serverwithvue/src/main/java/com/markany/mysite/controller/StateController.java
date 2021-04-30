@@ -20,6 +20,7 @@ import com.markany.mysite.vo.UserVo;
 @RequestMapping("/api/state")
 public class StateController {
 	
+	
 	@Autowired
 	private StateService stateService;
 	
