@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="systemLog">
+	<select id="findByDateAction" parameterType="systemlogvo" resultType="systemlogvo">
+		<![CDATA[
+			select id, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S' )as createdAt, updated_at as updatedAt, 
+				   deleted_at asdeletedAt, user_info_id as userInfoId, 
+				   user_name as userName, remote_ip as remoteIp, action, state 
+			 from authentication_logs 
+			 where created_at between #{fDateTime } and #{lDateTime }  and action = #{action }
+		]]>					
+	</select>
+	
+	<select id="findByDate" parameterType="systemlogvo" resultType="systemlogvo">
+		<![CDATA[
+			select id, DATE_FORMAT(created_at,'%Y-%m-%d %H:%i:%S')as createdAt, updated_at as updatedAt, 
+				   deleted_at asdeletedAt, user_info_id as userInfoId, 
+				   user_name as userName, remote_ip as remoteIp, action, state 
+			 from authentication_logs 
+			 where created_at between #{fDateTime } and #{lDateTime }
+		]]>					
+	</select>
+	
+	
+</mapper>

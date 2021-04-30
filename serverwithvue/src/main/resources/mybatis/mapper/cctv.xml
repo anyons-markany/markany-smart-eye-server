@@ -3,16 +3,54 @@
 <mapper namespace="cctv">	
 	<select id="findAll" resultType="cctvvo">
 		<![CDATA[
-			select	id, id_string as idString, name, comment, address, ip_address as ipAddress, 
-					area1, area2, area3, latitude, longitude, manage_port as managePort, rtsp_port as rtspPort, 
-        			rtsp_path as rtspPath, onvif_port as onvifPort, onvif_profile as onvifProfile, manufacturer, 
-        			model, username, alarm, camera_type as cameraType, ptz_control_usage as ptzControlUsage, pan,
-			        tilt, pan_flip as panFlip, pan_degree as panDegree, tilt_degree as tiltDegree, 
-			        play_before as playBefore, play_after as playAfter, forwarded, cap_image as capImage, 
-			        updated_at as updatedAt, firmware_version as firmwareVersion, emergency_bell as emergencyBell, 
-			        lua_script as luaScript, health_check as healthCheck, ptz_script as ptzScript
+			select	id, ptz_control_usage, name, area1, area2, area3, manage_port, rtsp_port, manufacturer, model, comment, password, camera_type, forwarded, emergency_bell
 			from cctv_infos;
 		]]>	
 	</select>
 
+
+	<insert id="insert" parameterType="cctvvo">
+		<![CDATA[
+			insert 
+			  into cctv_infos(name, ptz_control_usage, forwarded, emergency_bell, comment, ip_address, area1, area2, area3, latitude, longitude,
+			  manufacturer, model, rtsp_path, rtsp_port, onvif_profile, onvif_port, username, password, camera_type)
+			values (#{name }, #{ptz_control_usage }, #{forwarded}, #{emergency_bell }, #{comment }, #{ip_address }, #{area1 }, #{area2 }, #{area3 }, #{latitude }, #{longitude },
+			#{manufacturer }, #{model }, #{rtsp_path }, #{rtsp_port }, #{onvif_profile }, #{onvif_port }, #{username }, #{password }, #{camera_type })
+		]]>
+		<selectKey keyProperty="no" resultType="long" order="AFTER">
+		<![CDATA[
+			select last_insert_id()
+		]]>
+		</selectKey>
+	</insert>
+	
+	<update id="update" parameterType="cctvvo">
+		<choose>
+			<when test='updated_at == null'>
+				<![CDATA[
+					update cctv_infos
+					   set	updated_at=now(), name=#{name }, ptz_control_usage=#{ptz_control_usage }, forwarded=#{forwarded }, emergency_bell=#{emergency_bell }, comment=#{comment }, ip_address=#{ip_address },
+					        area1=#{area1 },area2=#{area2 }, area3=#{area3 }, latitude=#{latitude }, longitude=#{longitude }, manufacturer=#{manufacturer }, model=#{model }, rtsp_path=#{rtsp_path }, rtsp_port=#{rtsp_port },
+					        onvif_profile=#{onvif_profile }, username=#{username }, password=#{password }, camera_type=#{camera_type }
+					 where id=#{id }
+				]]>					
+			</when>
+			<otherwise>
+				<![CDATA[
+					update cctv_infos
+					   set	updated_at=now(), name=#{name }, ptz_control_usage=#{ptz_control_usage }, forwarded=#{forwarded }, emergency_bell=#{emergency_bell }, comment=#{comment }, ip_address=#{ip_address },
+					        area1=#{area1 },area2=#{area2 }, area3=#{area3 }, latitude=#{latitude }, longitude=#{longitude }, manufacturer=#{manufacturer }, model=#{model }, rtsp_path=#{rtsp_path }, rtsp_port=#{rtsp_port },
+					        onvif_profile=#{onvif_profile }, username=#{username }, password=#{password }, camera_type=#{camera_type }
+					 where id=#{id }
+				]]>
+			</otherwise>
+		</choose>
+	</update>
+	
+	<delete id="delete" parameterType="Long">
+		<![CDATA[
+			delete from cctv_infos
+			where id=#{id }
+		]]>	
+	</delete>
 </mapper>
