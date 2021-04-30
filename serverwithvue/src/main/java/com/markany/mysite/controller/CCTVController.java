@@ -14,12 +14,12 @@ import com.markany.mysite.vo.CCTVVo;
 
 @CrossOrigin
 @RestController("CCTVApiController")
-@RequestMapping("/api/cctv")
+@RequestMapping("/api/cctvgroup")
 public class CCTVController {	
 	@Autowired
 	private CCTVService cctvService;
 	
-	@RequestMapping("/cctvlist")
+	@RequestMapping("/list")
 	public JsonResult index(Model model) {
 		List<CCTVVo> list = cctvService.getCCTVList();
 		return JsonResult.success(list);

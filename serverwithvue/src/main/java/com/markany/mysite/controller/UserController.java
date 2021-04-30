@@ -15,11 +15,11 @@ import com.markany.mysite.vo.UserVo;
 @CrossOrigin
 @RestController("UserApiController")
 @RequestMapping("/api/user")
-public class UserController {	
+public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping("/userlist")
+	@RequestMapping("/list")
 	public JsonResult index(Model model) {
 		List<UserVo> list = userService.getUserList();
 		return JsonResult.success(list);
