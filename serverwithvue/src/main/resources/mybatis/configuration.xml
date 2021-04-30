@@ -10,5 +10,6 @@
 		<mapper resource="mybatis/mapper/user.xml" />
 		<mapper resource="mybatis/mapper/cctv.xml" />
 		<mapper resource="mybatis/mapper/recoding.xml" />
+		<mapper resource="mybatis/mapper/state.xml" />
 	</mappers>
 </configuration>
