@@ -5,10 +5,12 @@
 		<typeAlias alias="uservo" type="com.markany.mysite.vo.UserVo"/>
 		<typeAlias alias="cctvvo" type="com.markany.mysite.vo.CCTVVo"/>
 		<typeAlias alias="recodingvo" type="com.markany.mysite.vo.RecodingVo"/>
+		<typeAlias alias="rtspvo" type="com.markany.mysite.vo.RTSPVo"/>
 	</typeAliases>	
 	<mappers>
 		<mapper resource="mybatis/mapper/user.xml" />
 		<mapper resource="mybatis/mapper/cctv.xml" />
 		<mapper resource="mybatis/mapper/recoding.xml" />
+		<mapper resource="mybatis/mapper/rtsp.xml"/>
 	</mappers>
 </configuration>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rtsp">
+
+	<!-- 목록 보여주기  -->
+	<select id="findAll" resultType="rtspvo">
+		<![CDATA[
+			select id, manufacturer, model, paths 
+			from rtsp_infos
+		]]>
+	</select>
+	
+	
+	<!-- insert  -->
+	<insert id="insert" parameterType="rtspvo">
+		<![CDATA[
+			insert 
+			  into rtsp_infos
+			values (null, #{manufacturer}, #{model}, #{paths})		
+		]]>
+		<selectKey keyProperty="id" resultType="long" order="AFTER">
+		<![CDATA[
+			select last_insert_id()
+		]]>					
+		</selectKey>
+	</insert>
+	
+	<!-- delete -->
+	<delete id="delete" parameterType="long">
+		<![CDATA[
+			delete
+			from rtsp_infos
+			where id=#{id}
+		]]>
+	</delete>
+	
+	<!-- update -->
+	<update id="update" parameterType="long" >
+				<![CDATA[
+					update rtsp_infos
+					   set manufacturer=#{manufacturer},	   
+					       model=#{model},
+					       paths=#{paths}
+					 where id=#{id}
+				]]>					
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- 
+	
+	id로 찾기 
+	<select id="findById" parameterType="long" resultType="rtspvo">
+		<![CDATA[
+			select id, manufacturer, model, paths
+			  from rtsp_infos
+			 where id=#{id}
+		]]>					
+	</select>
+	
+	manufacturer로 찾기 
+	<select id="findByManufacturer" parameterType="string" resultType="rtspvo">
+		<![CDATA[
+			select id, manufacturer, model, paths
+			  from rtsp_infos
+			 where manufacturer=#{manufacturer}
+		]]>					
+	</select>
+	
+	model로 찾기 
+	<select id="findByModel" parameterType="string" resultType="rtspvo">
+		<![CDATA[
+			select id, manufacturer, model, paths
+			  from rtsp_infos
+			 where model=#{model}
+		]]>					
+	</select>
+	
+	paths로 찾기 
+	<select id="findBypaths" parameterType="string" resultType="rtspvo">
+		<![CDATA[
+			select id, manufacturer, model, paths
+			  from rtsp_infos
+			 where paths=#{paths}
+		]]>					
+	</select>
+	
+	
+	 -->
+	
+	
+	
+		
+	
+</mapper>
