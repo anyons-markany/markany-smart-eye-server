@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cctvgroup">
+	<select id="findAll" resultType="cctvgroupvo">
+		<![CDATA[
+			select *
+			from cctv_group_infos
+		]]>
+	</select>
+	
+	<select id="findInGroup" parameterType="Long" resultType="cctvvo">
+		<![CDATA[
+			select c.name, c.ptz_control_usage, c.model, c.area1, c.area2, c.area3, c.manage_port, c.rtsp_port, c.manufacturer, c.camera_type
+			from cctv_infos as c left join cctvgroup_cctvs as i on c.id = i.cctv_info_id left join cctv_group_infos as g on i.cctv_group_info_id = g.id
+			where g.id=#{id }
+		]]>	
+	</select>
+
+
+	<insert id="insert" parameterType="cctvgroupvo">
+		<![CDATA[
+			insert 
+			  into cctv_group_infos name 
+			values #{name }
+		]]>
+		<selectKey keyProperty="no" resultType="long" order="AFTER">
+		<![CDATA[
+			select last_insert_id()
+		]]>
+		</selectKey>
+	</insert>
+	
+	<update id="update" parameterType="cctvgroupvo">
+		<![CDATA[
+			update cctv_group_infos
+			   set	name=#{name }
+			 where id=#{id }
+		]]>
+	</update>
+	
+	<delete id="delete" parameterType="Long">
+		<![CDATA[
+			delete from cctv_group_infos
+			where id=#{id }
+		]]>
+	</delete>
+</mapper>

@@ -11,42 +11,50 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.markany.mysite.dto.JsonResult;
-import com.markany.mysite.service.RecodingService;
-import com.markany.mysite.vo.RecodingVo;
+import com.markany.mysite.service.CCTVGroupService;
+import com.markany.mysite.vo.CCTVGroupVo;
+import com.markany.mysite.vo.CCTVVo;
 
 @CrossOrigin
-@RestController("RecodingApiController")
-@RequestMapping("/api/recoding")
-public class RecodingController {
+@RestController("CCTVGroupApiController")
+@RequestMapping("/api/cctvgroup")
+public class CCTVGroupController {
 	@Autowired
-	private RecodingService recodingService;
+	private CCTVGroupService cctvgroupService;
 	
-	// 불러오기
 	@RequestMapping("/list")
 	public JsonResult index(Model model) {
-		List<RecodingVo> list = recodingService.getRecodingList();
+		List<CCTVGroupVo> list = cctvgroupService.getCCTVGroupList();
+		return JsonResult.success(list);
+	}
+	
+	@RequestMapping("/listingroup")
+	public JsonResult listingroup(Model model, @RequestBody CCTVGroupVo vo) {
+		System.out.println(vo.getId());
+		List<CCTVVo> list = cctvgroupService.getCCTVListInGroup(vo.getId());
 		return JsonResult.success(list);
 	}
 	
 	// 추가하기
 	@PostMapping("/add")
-	public JsonResult add(@RequestBody RecodingVo vo) {
-		recodingService.add(vo);
+	public JsonResult add(@RequestBody CCTVGroupVo vo) {
+		cctvgroupService.add(vo);
 		return JsonResult.success(vo);
 	}
 	
 	// 수정하기
 	@RequestMapping("/update")
-	public JsonResult update(@RequestBody RecodingVo vo) {
+	public JsonResult update(@RequestBody CCTVGroupVo vo) {
 		System.out.println(vo.toString());
-		recodingService.update(vo);
+		cctvgroupService.update(vo);
 		return JsonResult.success(vo);
 	}
 	
+	
 	// 삭제하기
 	@RequestMapping("/delete")
-	public JsonResult delete(@RequestBody RecodingVo vo) {
-		recodingService.delete(vo.getId());
+	public JsonResult delete(@RequestBody CCTVGroupVo vo) {
+		cctvgroupService.delete(vo.getId());
 		return JsonResult.success(vo);
 	}
 }
