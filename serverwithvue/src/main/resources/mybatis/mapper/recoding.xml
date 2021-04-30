@@ -3,12 +3,21 @@
 <mapper namespace="recoding">
 	<select id="findAll" resultType="recodingvo">
 		<![CDATA[
-			select name,ip_address,vendor   
+			select id,name,ip_address,vendor   
 			from event_sources;
 		]]>
 	</select>
 	
+	<select id="findById" parameterType="long" resultType="recodingvo">
+		<![CDATA[
+			select id, name, ip_address, vendor
+			from event_sources
+			where id = #{id }
+		]]>
 
+	</select>
+	
+	
 	<insert id="insert" parameterType="recodingvo">
 		<![CDATA[
 			insert 
@@ -21,4 +30,36 @@
 		]]>
 		</selectKey>
 	</insert>
+	
+	<update id="update" parameterType="recodingvo">
+		<choose>
+			<when test='updated_at == null'>
+				<![CDATA[
+					update event_sources
+					   set	updated_at=now(),
+					   		name=#{name },
+					       	ip_address=#{ip_address },
+					       	vendor=#{vendor }
+					 where id=#{id }
+				]]>					
+			</when>
+			<otherwise>
+				<![CDATA[
+					update event_sources
+					   set	updated_at=now(),
+					   		name=#{name },
+					       	ip_address=#{ip_address },
+					       	vendor=#{vendor }
+					 where id=#{id }
+				]]>					
+			</otherwise>
+		</choose>		
+	</update>
+	
+	<delete id="delete" parameterType="Long">
+		<![CDATA[
+			delete from event_sources
+			where id=#{id }
+		]]>	
+	</delete>
 </mapper>
