@@ -13,7 +13,7 @@ import com.markany.mysite.service.UserService;
 import com.markany.mysite.vo.UserVo;
 
 @CrossOrigin
-@RestController
+@RestController("UserApiController")
 @RequestMapping("/api")
 public class UserController {
 	@Autowired

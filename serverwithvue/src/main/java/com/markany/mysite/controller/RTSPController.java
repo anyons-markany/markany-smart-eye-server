@@ -36,6 +36,22 @@ public class RTSPController {
 		return JsonResult.success(rtspVo);
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@DeleteMapping("/api/rtsp_infos/rtsp_list/{id}")
 	public JsonResult delRTSP(@PathVariable Long id) {
 		System.out.println("id: " + id);

@@ -30,7 +30,6 @@ public class CCTVGroupController {
 	
 	@RequestMapping("/listingroup")
 	public JsonResult listingroup(Model model, @RequestBody CCTVGroupVo vo) {
-		System.out.println(vo.getId());
 		List<CCTVVo> list = cctvgroupService.getCCTVListInGroup(vo.getId());
 		return JsonResult.success(list);
 	}
@@ -48,8 +47,7 @@ public class CCTVGroupController {
 		System.out.println(vo.toString());
 		cctvgroupService.update(vo);
 		return JsonResult.success(vo);
-	}
-	
+	}	
 	
 	// 삭제하기
 	@RequestMapping("/delete")

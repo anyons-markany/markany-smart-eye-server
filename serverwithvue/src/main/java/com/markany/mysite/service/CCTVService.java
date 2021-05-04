@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.markany.mysite.repository.CCTVRepository;
+import com.markany.mysite.vo.CCTVGroupVo;
 import com.markany.mysite.vo.CCTVVo;
 
 @Service
@@ -31,5 +32,18 @@ public class CCTVService {
 	public boolean delete(Long id) {
 		int count = cctvRepository.delete(id);
 		return count > 0;
+	}
+	
+	public List<CCTVGroupVo> getCentConList() {
+		return cctvRepository.centcon_find();
+	}
+
+	public List<CCTVGroupVo> getCentConAddList() {
+		return cctvRepository.getCentConAddList();
+	}
+
+	public boolean cent_con_update(CCTVVo vo) {
+		int count = cctvRepository.cent_con_update(vo);
+		return count == 1;
 	}
 }

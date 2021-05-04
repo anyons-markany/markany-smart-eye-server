@@ -3,11 +3,26 @@
 <mapper namespace="cctv">	
 	<select id="findAll" resultType="cctvvo">
 		<![CDATA[
-			select	id, ptz_control_usage, name, area1, area2, area3, manage_port, rtsp_port, manufacturer, model, comment, password, camera_type, forwarded, emergency_bell
+			select	id, ptz_control_usage, name, area1, area2, area3, manage_port, rtsp_port, manufacturer, model, comment, password, camera_type, forwarded, emergency_bell, cent_con
 			from cctv_infos;
 		]]>	
 	</select>
 
+	<select id="centcon_true_find" resultType="cctvvo">
+		<![CDATA[
+			select	id, name, area1, area2, area3, manufacturer, model
+			from cctv_infos
+			where cent_con = 1;
+		]]>	
+	</select>
+	
+	<select id="centcon_false_find" resultType="cctvvo">
+		<![CDATA[
+			select	id, name, area1, area2, area3, manufacturer, model
+			from cctv_infos
+			where cent_con = 0;
+		]]>
+	</select>
 
 	<insert id="insert" parameterType="cctvvo">
 		<![CDATA[
@@ -31,7 +46,7 @@
 					update cctv_infos
 					   set	updated_at=now(), name=#{name }, ptz_control_usage=#{ptz_control_usage }, forwarded=#{forwarded }, emergency_bell=#{emergency_bell }, comment=#{comment }, ip_address=#{ip_address },
 					        area1=#{area1 },area2=#{area2 }, area3=#{area3 }, latitude=#{latitude }, longitude=#{longitude }, manufacturer=#{manufacturer }, model=#{model }, rtsp_path=#{rtsp_path }, rtsp_port=#{rtsp_port },
-					        onvif_profile=#{onvif_profile }, username=#{username }, password=#{password }, camera_type=#{camera_type }
+					        onvif_profile=#{onvif_profile }, username=#{username }, password=#{password }, camera_type=#{camera_type }, cent_con=#{cent_con }
 					 where id=#{id }
 				]]>					
 			</when>
@@ -40,11 +55,19 @@
 					update cctv_infos
 					   set	updated_at=now(), name=#{name }, ptz_control_usage=#{ptz_control_usage }, forwarded=#{forwarded }, emergency_bell=#{emergency_bell }, comment=#{comment }, ip_address=#{ip_address },
 					        area1=#{area1 },area2=#{area2 }, area3=#{area3 }, latitude=#{latitude }, longitude=#{longitude }, manufacturer=#{manufacturer }, model=#{model }, rtsp_path=#{rtsp_path }, rtsp_port=#{rtsp_port },
-					        onvif_profile=#{onvif_profile }, username=#{username }, password=#{password }, camera_type=#{camera_type }
+					        onvif_profile=#{onvif_profile }, username=#{username }, password=#{password }, camera_type=#{camera_type }, cent_con=#{cent_con }
 					 where id=#{id }
 				]]>
 			</otherwise>
 		</choose>
+	</update>
+	
+	<update id="cent_con_update" parameterType="cctvvo">
+		<![CDATA[
+			update cctv_infos
+			set    cent_con=#{cent_con }
+			where  id=#{id }
+		]]>
 	</update>
 	
 	<delete id="delete" parameterType="Long">

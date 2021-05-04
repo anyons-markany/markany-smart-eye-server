@@ -30,8 +30,14 @@ public class CCTVVo {
 	private Date updated_at;
 	private String health_comment;
 	private String user_comment;
+	private boolean cent_con;
 	
-	
+	public boolean isCent_con() {
+		return cent_con;
+	}
+	public void setCent_con(boolean cent_con) {
+		this.cent_con = cent_con;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -197,7 +203,7 @@ public class CCTVVo {
 				+ rtsp_path + ", rtsp_port=" + rtsp_port + ", onvif_profile=" + onvif_profile + ", onvif_port="
 				+ onvif_port + ", username=" + username + ", password=" + password + ", camera_type=" + camera_type
 				+ ", manage_port=" + manage_port + ", forwarded=" + forwarded + ", updated_at=" + updated_at
-				+ ", health_comment=" + health_comment + ", user_comment=" + user_comment + "]";
+				+ ", health_comment=" + health_comment + ", user_comment=" + user_comment + ", cent_con=" + cent_con
+				+ "]";
 	}
-
 }

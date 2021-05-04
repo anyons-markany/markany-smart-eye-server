@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.markany.mysite.dto.JsonResult;
 import com.markany.mysite.service.CCTVService;
+import com.markany.mysite.vo.CCTVGroupVo;
 import com.markany.mysite.vo.CCTVVo;
 
 @CrossOrigin
 @RestController("CCTVApiController")
-@RequestMapping("/api/cctvgroup")
+@RequestMapping("/api/cctv")
 public class CCTVController {	
 	@Autowired
 	private CCTVService cctvService;
@@ -37,7 +38,6 @@ public class CCTVController {
 	// 수정하기
 	@RequestMapping("/update")
 	public JsonResult update(@RequestBody CCTVVo vo) {
-		System.out.println(vo.toString());
 		cctvService.update(vo);
 		return JsonResult.success(vo);
 	}
@@ -48,4 +48,26 @@ public class CCTVController {
 		cctvService.delete(vo.getId());
 		return JsonResult.success(vo);
 	}
+	
+	// 집중 관제 목록
+	@RequestMapping("/cent_con")
+	public JsonResult cent_con(Model model) {
+		List<CCTVGroupVo> list = cctvService.getCentConList();
+		return JsonResult.success(list);
+	}
+	
+	// 집중 관제 추가 리스트
+	@RequestMapping("/cent_con_add")
+	public JsonResult cent_con_add(Model model) {
+		List<CCTVGroupVo> list = cctvService.getCentConAddList();
+		return JsonResult.success(list);
+	}
+	
+	// 집중 관제 수정
+	@RequestMapping("/cent_con_update")
+	public JsonResult cent_con_update(@RequestBody CCTVVo vo) {
+		cctvService.cent_con_update(vo);
+		return JsonResult.success(vo);
+	}
+	// 집중 관제 삭제 
 }
